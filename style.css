@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+:root {
+  --success-color:#2ecc71;
+  --error-color:#e74c3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+/* box-sizing: border-box because we don't want any padding to affect the width of the element */
+
+body {
+  background-color: #f9fafb;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  /* All the direct children of the body will be a flex item 
+  in this example we have only one child - the div container 
+  but we want this container in the middle */
+  align-items: center;
+  justify-content: center;
+  /* To center it vertically too we have to add a height */
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  width: 400px;
+}
+
+h2 {
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.form {
+  padding: 30px 40px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-control label {
+  color: #777;
+  display: block;
+  /* label is display inline by default 
+  so we display: block; so they go on their own line and knock the next element down */
+  margin-bottom: 5px;
+}
+
+.form-control input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Get rid of the outline */
+.form-control input:focus {
+  outline: 0;
+  border-color: #777;
+}
+
+/* Different states for the inputs
+If success, border green
+If error, border red
+ */
+.form-control.success input {
+  border-color: var(--success-color);
+}
+.form-control.error input {
+  border-color: var(--error-color);
+}
+
+.form-control small {
+  color: var(--error-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* initially hidden */
+  visibility: hidden;
+  /* display: none; */
+  /* Difference between these thow:
+  - display: none; will collapse everything around it
+  - visibility: hidden; just simply makes it invisible */
+}
+
+/* In JS when something goes wrong we're going to add the error class 
+And then set the visibility back to visible */
+.form-control.error small {
+  visibility: visible;
+}
+
+.form button {
+  cursor: pointer;
+  background-color: #450065;
+  border: 2px solid #450065;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
